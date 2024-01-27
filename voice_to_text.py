@@ -1,5 +1,5 @@
 import speech_recognition as sr
-import pyaudio
+import mypyaudio
 
 
 def transform_audio_into_text():
