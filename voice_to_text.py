@@ -4,15 +4,19 @@ import speech_recognition as sr
 import io
 
 
-def record_audio(duration=5, samplerate=44100):
+def record_audio(duration=5, samplerate=44100):  # default 44100 Hz is CD quality
     """Record audio with the specified duration and samplerate."""
     print("Recording...")
     recording = sd.rec(
-        int(duration * samplerate), samplerate=samplerate, channels=1, dtype="int16"
+        int(duration * samplerate),
+        samplerate=samplerate,
+        channels=1,
+        dtype="int16",  # common format for audio
     )
     sd.wait()  # Wait until the recording is finished
     print("Recording complete")
     return np.array(recording, dtype=np.int16)
+    # converted to an int16 NumPy array before returning, to match the expected format for speech recognition.
 
 
 def recognize_audio(audio_data, samplerate=44100):
