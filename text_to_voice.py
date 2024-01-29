@@ -33,7 +33,7 @@ def ask_day():
         6: "Sunday",
     }
     day = calendar[week_day]
-    text_to_speech(calendar[week_day])
+    text_to_speech(f"Today is {calendar[week_day]}")
 
 
 # Example usage
