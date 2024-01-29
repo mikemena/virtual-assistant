@@ -22,12 +22,21 @@ def ask_day():
     print(day)
     week_day = day.weekday()
     print(week_day)
-    return week_day
 
+    calendar = {
+        0: "Monday",
+        1: "Tuesday",
+        2: "Wednesday",
+        3: "Thursday",
+        4: "Friday",
+        5: "Saturday",
+        6: "Sunday",
+    }
+    day = calendar[week_day]
+    text_to_speech(calendar[week_day])
 
-week_day = ask_day()
 
 # Example usage
 text = "rata de dos patas, te estoy hablando a ti."
-text_to_speech(f"today is {week_day}")
 text_to_speech(text)
+ask_day()
