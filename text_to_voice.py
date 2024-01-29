@@ -1,6 +1,7 @@
 from gtts import gTTS
 import os
 import platform
+import datetime
 
 
 def text_to_speech(text, lang="en"):
@@ -16,6 +17,17 @@ def text_to_speech(text, lang="en"):
         os.system("xdg-open output.mp3")
 
 
+def ask_day():
+    day = datetime.date.today()
+    print(day)
+    week_day = day.weekday()
+    print(week_day)
+    return week_day
+
+
+week_day = ask_day()
+
 # Example usage
 text = "rata de dos patas, te estoy hablando a ti."
+text_to_speech(f"today is {week_day}")
 text_to_speech(text)
