@@ -1,18 +1,21 @@
-# import pyttsx3
+from gtts import gTTS
+import os
+import platform
 
 
-# def speak(message):
-#     engine = pyttsx3.init()
+def text_to_speech(text, lang="en"):
+    tts = gTTS(text=text, lang=lang, slow=False)
+    tts.save("output.mp3")
 
-#     engine.say(message)
+    # Determine the platform and execute the appropriate command to open the file
+    if platform.system() == "Windows":
+        os.system("start output.mp3")
+    elif platform.system() == "Darwin":  # macOS
+        os.system("open output.mp3")
+    else:  # Assuming Linux or other Unix-like
+        os.system("xdg-open output.mp3")
 
-#     engine.runAndWait()
 
-
-# speak("Hello Cooper")
-
-import pyttsx3
-
-engine = pyttsx3.init()
-engine.say("I will speak this text")
-engine.runAndWait()
+# Example usage
+text = "rata de dos patas, te estoy hablando a ti."
+text_to_speech(text)
