@@ -33,13 +33,9 @@ def ask_day():
         6: "Sunday",
     }
     day = calendar[week_day]
-    speak(f"Today is {calendar[week_day]}")
+    return day
 
 
 def ask_time():
     time = datetime.datetime.now().strftime("%I:%M %p")  # Formats time as "HH:MM AM/PM"
-    speak(f"The current time is {time}")
-
-
-def initial_greeting():
-    speak("Hello, I am Sophie. How can i help you?")
+    return time
