@@ -10,12 +10,15 @@ def my_assistant():
     while go_on:
         # Record audio
         recorded_audio = vt.record_audio(duration=5)
+        print("recorded_audio type -> ", type(recorded_audio))
 
         # Convert the NumPy array to raw audio bytes
         audio_bytes = recorded_audio.tobytes()
+        print("audio_bytes type -> ", type(audio_bytes))
 
         # Recognize the recorded audio
         my_request = vt.transform_audio_into_text(audio_bytes)
+        print(my_request)
         if my_request:
             if "open youtube" in my_request:
                 tv.speak("Sure, I am opening YouTube.")
@@ -29,7 +32,7 @@ def my_assistant():
             else:
                 tv.speak("I'm sorry, I didn't understand that. Can you please repeat?")
         else:
-            tv.speak(("I'm sorry, I did'nt catch that. Could you please repeat?"))
+            tv.speak("I'm sorry, I did'nt catch that. Could you please repeat?")
 
 
 my_assistant()
