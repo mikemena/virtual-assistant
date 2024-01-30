@@ -20,7 +20,7 @@ def my_assistant():
         my_request = vt.transform_audio_into_text(audio_bytes)
         print(my_request)
         if my_request:
-            if "open youtube" in my_request:
+            if "open YouTube" in my_request:
                 tv.speak("Sure, I am opening YouTube.")
                 webbrowser.open("https://www.youtube.com")
             elif "open browser" in my_request:
