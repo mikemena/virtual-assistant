@@ -4,7 +4,7 @@ import platform
 import datetime
 
 
-def text_to_speech(text, lang="en"):
+def speak(text, lang="en"):
     tts = gTTS(text=text, lang=lang, slow=False)
     tts.save("output.mp3")
 
@@ -33,10 +33,13 @@ def ask_day():
         6: "Sunday",
     }
     day = calendar[week_day]
-    text_to_speech(f"Today is {calendar[week_day]}")
+    speak(f"Today is {calendar[week_day]}")
 
 
-# Example usage
-text = "rata de dos patas, te estoy hablando a ti."
-text_to_speech(text)
-ask_day()
+def ask_time():
+    time = datetime.datetime.now().strftime("%I:%M %p")  # Formats time as "HH:MM AM/PM"
+    speak(f"The current time is {time}")
+
+
+def initial_greeting():
+    speak("Hello, I am Sophie. How can i help you?")

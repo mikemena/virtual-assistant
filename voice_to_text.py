@@ -19,9 +19,9 @@ def record_audio(duration=5, samplerate=44100):  # default 44100 Hz is CD qualit
     # converted to an int16 NumPy array before returning, to match the expected format for speech recognition.
 
 
-def recognize_audio(audio_data, samplerate=44100):
+def transform_audio_into_text(audio_data, samplerate=44100):
     """Recognize speech from the audio data."""
-    recognizer = sr.Recognizer()
+    r = sr.Recognizer()
 
     # Convert the NumPy array to audio data with the required parameters
     audio = sr.AudioData(
@@ -31,7 +31,7 @@ def recognize_audio(audio_data, samplerate=44100):
     # Recognize speech using Google Web Speech API
     try:
         print("Recognizing...")
-        text = recognizer.recognize_google(audio)
+        text = r.recognize_google(audio, language="en'us")
         print(f"Transcription: {text}")
     except sr.UnknownValueError:
         print("Google Web Speech API could not understand the audio")
@@ -47,4 +47,4 @@ if __name__ == "__main__":
     audio_bytes = recorded_audio.tobytes()
 
     # Recognize the recorded audio
-    recognize_audio(audio_bytes)
+    transform_audio_into_text(audio_bytes)
