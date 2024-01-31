@@ -6,7 +6,7 @@ import yfinance as yf
 
 
 def my_assistant():
-    tv.speak("Hello, I'm Sophie. how can I assist you today?")
+    tv.speak("Hello, I'm Maria. how can I assist you today?")
 
     go_on = True
     while go_on:
